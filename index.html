@@ -1,0 +1,928 @@
+cat > /mnt/user-data/outputs/anne_enna_portfolio.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RACHANA SOPHON — Financial Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f1f3d;--navy-mid:#1a3260;--navy-light:#2a4a8a;
+  --cream:#f5f0e8;--cream-dark:#ede7d9;--cream-mid:#e0d8c8;
+  --gold:#c9a84c;--gold-light:#e8c96a;
+  --text:#1a1a2e;--text-muted:#6b7280;--white:#ffffff;
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;
+  --radius:10px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--text);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(245,240,232,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--cream-mid);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 24px rgba(15,31,61,.09)}
+.nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.15rem;letter-spacing:-.01em;text-decoration:none;color:var(--navy)}
+.nav-links{display:flex;gap:2.1rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text);font-size:.8rem;font-weight:400;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--navy)}
+.nav-cta{display:flex;gap:.7rem}
+.btn-nav{background:var(--navy);color:var(--cream);padding:.5rem 1.2rem;border-radius:100px;font-size:.8rem;font-weight:500;text-decoration:none;transition:background .2s}
+.btn-nav:hover{background:var(--navy-light)}
+.btn-nav-outline{border:1px solid var(--navy);color:var(--navy);padding:.5rem 1.2rem;border-radius:100px;font-size:.8rem;font-weight:400;text-decoration:none;transition:background .2s,color .2s}
+.btn-nav-outline:hover{background:var(--navy);color:var(--cream)}
+
+/* HERO */
+#home{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:8rem 4rem 4rem;position:relative;overflow:hidden;border-bottom:1px solid var(--cream-mid)}
+.hero-orb{position:absolute;top:-10rem;right:-8rem;width:55vw;height:55vw;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(42,74,138,.1) 0%,transparent 70%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2rem;opacity:0;animation:fadeUp .7s .1s ease forwards}
+.hero-tag::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
+.hero-name{font-family:var(--font-display);font-size:clamp(4.5rem,10vw,9.5rem);font-weight:700;line-height:.92;letter-spacing:-.02em;margin-bottom:1.5rem;opacity:0;animation:fadeUp .7s .2s ease forwards}
+.hero-name .first{display:block;color:var(--navy)}
+.hero-name .last{display:block;color:var(--cream-mid);-webkit-text-stroke:2px var(--navy);letter-spacing:.02em}
+.hero-typewriter{font-family:var(--font-mono);font-size:1rem;color:var(--navy-light);margin-bottom:2.5rem;min-height:1.5rem;opacity:0;animation:fadeUp .7s .35s ease forwards}
+.cursor{display:inline-block;width:2px;height:1em;background:var(--gold);vertical-align:middle;margin-left:2px;animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;opacity:0;animation:fadeUp .7s .45s ease forwards}
+.hero-desc{max-width:400px;font-size:.95rem;color:var(--text-muted);line-height:1.8}
+.hero-actions{display:flex;gap:1rem;align-items:center}
+.btn-primary{background:var(--navy);color:var(--cream);padding:.9rem 2rem;border-radius:100px;font-size:.85rem;font-weight:500;text-decoration:none;transition:background .2s,transform .2s}
+.btn-primary:hover{background:var(--navy-light);transform:translateY(-1px)}
+.btn-secondary{border:1.5px solid var(--navy);color:var(--navy);padding:.9rem 2rem;border-radius:100px;font-size:.85rem;font-weight:500;text-decoration:none;transition:background .2s,color .2s}
+.btn-secondary:hover{background:var(--navy);color:var(--cream)}
+.hero-bg-word{position:absolute;right:-1rem;bottom:-4rem;font-family:var(--font-display);font-size:20vw;font-weight:700;color:transparent;-webkit-text-stroke:1px rgba(15,31,61,.07);letter-spacing:-.04em;line-height:1;pointer-events:none;user-select:none}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fadeUp .7s .8s ease forwards}
+.hero-scroll span{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.5);opacity:.5}}
+
+/* SECTION */
+section{padding:6rem 4rem}
+.section-label{font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem}
+.section-label::before{content:'';display:block;width:28px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:700;line-height:1.05;letter-spacing:-.02em;color:var(--navy);margin-bottom:3rem}
+
+/* ABOUT */
+#about{border-bottom:1px solid var(--cream-mid)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-text p{color:var(--text-muted);font-size:.95rem;margin-bottom:1.2rem;line-height:1.8}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--cream-mid);border:1px solid var(--cream-mid);border-radius:var(--radius);overflow:hidden;margin-top:2.5rem}
+.stat-box{background:var(--cream);padding:1.5rem;display:flex;flex-direction:column;gap:.25rem;transition:background .2s}
+.stat-box:hover{background:var(--cream-dark)}
+.stat-num{font-family:var(--font-display);font-size:2.8rem;font-weight:700;line-height:1;color:var(--navy)}
+.stat-label{font-size:.78rem;color:var(--text-muted)}
+.skills-group{margin-bottom:1.75rem}
+.skills-group-title{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.skill-item{margin-bottom:.65rem}
+.skill-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem}
+.skill-name{font-size:.82rem;color:var(--text);font-weight:400}
+.skill-pct{font-family:var(--font-mono);font-size:.7rem;color:var(--text-muted)}
+.skill-bar-bg{height:4px;background:var(--cream-mid);border-radius:100px;overflow:hidden}
+.skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--navy),var(--navy-light));border-radius:100px;width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.75rem}
+.tag{font-size:.75rem;padding:.25rem .7rem;border:1px solid var(--cream-mid);border-radius:100px;color:var(--text-muted);cursor:default;transition:all .15s}
+.tag:hover{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+
+/* EDUCATION */
+#education{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.06)}
+#education .section-label{color:rgba(255,255,255,.35)}
+#education .section-label::before{background:var(--gold)}
+#education .section-title{color:var(--cream)}
+.timeline{position:relative;padding-left:2.5rem;max-width:680px}
+.timeline::before{content:'';position:absolute;left:0;top:.5rem;bottom:.5rem;width:1px;background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,.08))}
+.timeline-item{position:relative;padding-left:2rem;margin-bottom:2.75rem}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-dot{position:absolute;left:-2.45rem;top:.45rem;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--navy);box-shadow:0 0 0 4px rgba(201,168,76,.18)}
+.timeline-year{font-family:var(--font-mono);font-size:.68rem;color:var(--gold);letter-spacing:.08em;margin-bottom:.35rem}
+.timeline-degree{font-family:var(--font-display);font-size:1.5rem;font-weight:600;color:var(--cream);margin-bottom:.2rem}
+.timeline-school{font-size:.84rem;color:rgba(255,255,255,.45);margin-bottom:.75rem}
+.timeline-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.timeline-tag{font-size:.72rem;padding:.2rem .65rem;border:1px solid rgba(255,255,255,.1);border-radius:100px;color:rgba(255,255,255,.4)}
+
+/* PROJECTS */
+#projects{border-bottom:1px solid var(--cream-mid)}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.project-card{border:1px solid var(--cream-mid);border-radius:16px;overflow:hidden;background:var(--white);transition:transform .25s,box-shadow .25s,border-color .25s;cursor:pointer;display:flex;flex-direction:column}
+.project-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(15,31,61,.11);border-color:var(--navy-light)}
+.project-icon-area{height:160px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.project-icon-bg{position:absolute;inset:0}
+.project-icon-svg{position:relative;z-index:1;width:68px;height:68px}
+.project-body{padding:1.75rem;flex:1;display:flex;flex-direction:column}
+.project-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+.project-num{font-family:var(--font-mono);font-size:.68rem;color:var(--text-muted)}
+.project-type{font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .65rem;border-radius:100px}
+.project-title{font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:.7rem}
+.project-desc{font-size:.85rem;color:var(--text-muted);line-height:1.7;margin-bottom:1rem;flex:1}
+.project-finding{border-left:2.5px solid var(--cream-mid);padding-left:.9rem;margin-bottom:1rem}
+.project-finding-label{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.project-finding p{font-size:.8rem;color:var(--text-muted);line-height:1.55}
+.project-tools{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:1.25rem}
+.ptag{font-family:var(--font-mono);font-size:.67rem;border:1px solid var(--cream-mid);border-radius:100px;padding:.17rem .58rem;color:var(--text-muted)}
+.project-links{display:flex;gap:1rem;flex-wrap:wrap}
+.project-link{font-size:.78rem;font-weight:500;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;border-bottom:1px solid var(--cream-mid);padding-bottom:1px;transition:border-color .15s,color .15s}
+.project-link:hover{border-color:var(--navy);color:var(--navy-light)}
+.project-link.live{color:var(--gold);border-color:rgba(201,168,76,.3)}
+.project-link.live:hover{border-color:var(--gold)}
+.project-link.no-github{color:var(--text-muted);font-style:italic;border-color:transparent;cursor:default;pointer-events:none}
+
+/* icon themes */
+.icon-risk .project-icon-bg{background:linear-gradient(135deg,#fff5f5,#fee2e2)}
+.icon-bi   .project-icon-bg{background:linear-gradient(135deg,#eff6ff,#dbeafe)}
+.icon-etl  .project-icon-bg{background:linear-gradient(135deg,#f0fdf4,#dcfce7)}
+.icon-log  .project-icon-bg{background:linear-gradient(135deg,#fefce8,#fef9c3)}
+.icon-stat .project-icon-bg{background:linear-gradient(135deg,#fdf4ff,#f3e8ff)}
+.badge-risk{background:#fee2e2;color:#dc2626}
+.badge-bi  {background:#dbeafe;color:#1d4ed8}
+.badge-etl {background:#dcfce7;color:#16a34a}
+.badge-log {background:#fef9c3;color:#a16207}
+.badge-stat{background:#f3e8ff;color:#7c3aed}
+
+/* OUTCOMES */
+#outcomes{background:var(--cream-dark);border-bottom:1px solid var(--cream-mid)}
+.outcomes-intro{max-width:560px;color:var(--text-muted);margin-bottom:3rem;font-size:.95rem;line-height:1.8}
+.outcomes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.outcome-card{border:1px solid var(--cream-mid);border-radius:var(--radius);overflow:hidden;background:var(--white);cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.outcome-card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(15,31,61,.1);border-color:var(--navy)}
+.outcome-thumb{height:148px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.outcome-thumb-inner{width:88%;height:82%;border-radius:4px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.outcome-overlay{position:absolute;inset:0;background:rgba(15,31,61,0);display:flex;align-items:center;justify-content:center;transition:background .2s}
+.outcome-card:hover .outcome-overlay{background:rgba(15,31,61,.38)}
+.outcome-overlay-icon{opacity:0;color:white;font-size:1.6rem;transition:opacity .2s}
+.outcome-card:hover .outcome-overlay-icon{opacity:1}
+.outcome-info{padding:.85rem 1rem}
+.outcome-project{font-size:.62rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem}
+.outcome-name{font-size:.84rem;font-weight:500;color:var(--navy)}
+.outcome-card.add-card{border-style:dashed;cursor:default}
+.outcome-card.add-card:hover{transform:none;box-shadow:none;border-color:var(--cream-mid)}
+.add-thumb{height:148px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+.add-thumb svg{width:28px;height:28px;stroke:var(--cream-mid)}
+.add-thumb span{font-size:.75rem;color:var(--cream-mid)}
+
+/* MOCK VISUALS */
+.pbi-hdr{height:10px}
+.pbi-bd{padding:5px;display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.pbi-tile{background:white;border-radius:2px;height:27px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:600;color:#333;overflow:hidden}
+.mcs{width:100%;height:44px;display:flex;align-items:flex-end;gap:2px;padding:0 3px}
+.bsm{flex:1;border-radius:1px 1px 0 0}
+.code-bg{background:#1e1e1e;height:100%;padding:7px}
+.cl{height:4px;border-radius:2px;margin-bottom:3px}
+.xhdr{height:9px;background:#217346}
+.xrow{display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:.5px solid #eee}
+.xc{font-size:5px;padding:2px 3px;overflow:hidden;white-space:nowrap;color:#444}
+.xc.h{background:#f5f5f5;font-weight:600;color:#222}
+.dag-bg{background:#0d1117;height:100%;padding:7px}
+.dag-nd{display:inline-block;background:#238636;border-radius:2px;padding:1px 4px;font-size:5px;color:white;font-family:monospace;margin:1px}
+.dag-ar{color:#58a6ff;font-size:6px;vertical-align:middle}
+.rhdr{background:#7c3aed;height:10px}
+.rbd{padding:5px;display:flex;flex-direction:column;gap:3px}
+.rbar-row{display:flex;align-items:center;gap:3px}
+.rbar-lbl{font-size:4.5px;color:#555;width:25px;text-align:right;flex-shrink:0}
+.rbar-bg{flex:1;height:6px;background:#f3e8ff;border-radius:2px;overflow:hidden}
+.rbar-fill{height:100%;border-radius:2px;background:#7c3aed}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(8,16,32,.9);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:2rem}
+.lightbox.open{display:flex}
+.lb-inner{background:var(--white);border-radius:18px;max-width:820px;width:100%;max-height:90vh;overflow:auto;padding:2.25rem;position:relative;animation:lbIn .28s ease}
+@keyframes lbIn{from{opacity:0;transform:scale(.95) translateY(12px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.lb-close{position:absolute;top:1.1rem;right:1.1rem;background:var(--cream-dark);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;color:var(--navy);transition:background .15s}
+.lb-close:hover{background:var(--cream-mid)}
+.lb-tag{font-size:.67rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .7rem;border-radius:100px;display:inline-block;margin-bottom:.75rem}
+.lb-title{font-family:var(--font-display);font-size:1.85rem;font-weight:700;color:var(--navy);margin-bottom:.45rem;line-height:1.1}
+.lb-org{font-size:.84rem;color:var(--text-muted);margin-bottom:1.25rem}
+.lb-preview{border-radius:var(--radius);overflow:hidden;margin-bottom:1.5rem;border:1px solid var(--cream-mid)}
+.lb-preview-inner{min-height:220px;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.lb-preview-note{font-size:.76rem;color:var(--text-muted);text-align:center;padding:.75rem 1rem;font-style:italic;border-top:1px solid var(--cream-mid)}
+.lb-action-bar{display:flex;gap:.75rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.lb-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.25rem;border-radius:100px;font-size:.8rem;font-weight:500;text-decoration:none;transition:all .15s}
+.lb-btn-primary{background:var(--navy);color:var(--cream)}
+.lb-btn-primary:hover{background:var(--navy-light)}
+.lb-btn-secondary{border:1px solid var(--cream-mid);color:var(--navy)}
+.lb-btn-secondary:hover{border-color:var(--navy)}
+.lb-btn-live{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy)}
+.lb-btn-live:hover{opacity:.88}
+.lb-section-title{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;margin-top:1.25rem}
+.lb-findings{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.lb-finding{background:var(--cream);border-radius:8px;padding:.9rem 1rem}
+.lb-finding strong{display:block;font-size:.75rem;color:var(--navy);margin-bottom:.25rem}
+.lb-finding p{font-size:.8rem;color:var(--text-muted);line-height:1.55}
+.lb-tools{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.75rem}
+.lb-tool{font-family:var(--font-mono);font-size:.68rem;border:1px solid var(--cream-mid);border-radius:100px;padding:.18rem .62rem;color:var(--text-muted)}
+
+/* LEADERSHIP */
+#leadership{border-bottom:1px solid var(--cream-mid)}
+.leadership-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.activity-card{border:1px solid var(--cream-mid);border-radius:var(--radius);padding:1.75rem;background:var(--white);transition:border-color .2s,transform .2s}
+.activity-card:hover{border-color:var(--navy);transform:translateY(-2px)}
+.activity-role{font-size:.64rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.activity-title{font-size:1rem;font-weight:500;color:var(--navy);margin-bottom:.25rem}
+.activity-org{font-size:.8rem;color:var(--text-muted);margin-bottom:.75rem}
+.activity-desc{font-size:.83rem;color:var(--text-muted);line-height:1.7}
+
+/* CONTACT */
+#contact{border-bottom:1px solid var(--cream-mid)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-big{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;line-height:1.1;color:var(--navy);margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column}
+.contact-link{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid var(--cream-mid);text-decoration:none;color:var(--navy);font-size:.88rem;transition:padding-left .2s}
+.contact-link:hover{padding-left:.5rem}
+.contact-link span{color:var(--text-muted);font-size:.77rem}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem}
+.form-group label{font-size:.67rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)}
+.form-group input,.form-group textarea{background:var(--white);border:1px solid var(--cream-mid);border-radius:8px;padding:.75rem 1rem;font-family:var(--font-body);font-size:.88rem;color:var(--text);outline:none;transition:border-color .2s;resize:none}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--navy)}
+.form-submit{background:var(--navy);color:var(--cream);border:none;border-radius:100px;padding:.9rem 2rem;font-size:.85rem;font-weight:500;cursor:pointer;font-family:var(--font-body);align-self:flex-start;transition:background .2s,transform .2s}
+.form-submit:hover{background:var(--navy-light);transform:translateY(-1px)}
+
+/* FOOTER */
+footer{padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;font-size:.77rem;color:var(--text-muted);border-top:1px solid var(--cream-mid)}
+.footer-langs{display:flex;gap:1.5rem}
+
+/* SCROLL ANIM */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}.nav-links{display:none}
+  #home{padding:6rem 1.5rem 2.5rem}
+  section{padding:4rem 1.5rem}
+  .about-grid,.projects-grid,.contact-grid,.leadership-grid{grid-template-columns:1fr;gap:2.5rem}
+  .outcomes-grid{grid-template-columns:1fr 1fr}
+  footer{padding:1.5rem;flex-direction:column;gap:1rem;text-align:center}
+  .lb-findings{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#home">RACHANA SOPHON</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#outcomes">Outcomes</a></li>
+    <li><a href="#leadership">Activities</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a class="btn-nav-outline" href="your-cv.pdf" download>↓ Download CV</a>
+    <a class="btn-nav" href="#contact">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-orb"></div>
+  <div>
+    <div class="hero-tag">Available for opportunities · Phnom Penh, Cambodia</div>
+    <h1 class="hero-name">
+      <span class="first">RACHANA</span>
+      <span class="last">SOPHON.</span>
+    </h1>
+    <div class="hero-typewriter"><span id="typed-text"></span><span class="cursor"></span></div>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-desc">Financial Engineering student turning raw data into decisions — specializing in Risk Analytics, Business Intelligence, and Data Engineering.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-bg-word">FE</div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label reveal">Who I am</div>
+  <h2 class="section-title reveal">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a Financial Engineering student with strong interests in Risk Management, Business Intelligence, Data Analytics, and Data Engineering.</p>
+      <p>My projects focus on transforming raw data into actionable business insights through statistical analysis, risk assessment, dashboard development, and data pipeline engineering.</p>
+      <p>I enjoy combining finance, technology, and business problem-solving to support data-driven decision making — developing expertise through academic and self-directed projects at ITC.</p>
+      <div class="about-stats">
+        <div class="stat-box"><div class="stat-num">5</div><div class="stat-label">Projects Completed</div></div>
+        <div class="stat-box"><div class="stat-num">1M+</div><div class="stat-label">Transactions Processed</div></div>
+        <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Languages Spoken</div></div>
+        <div class="stat-box"><div class="stat-num">ITC</div><div class="stat-label">Institute of Technology, Cambodia</div></div>
+      </div>
+    </div>
+    <div class="about-right reveal reveal-delay-2">
+      <div class="skills-group">
+        <div class="skills-group-title">Programming & Analytics</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-w="88"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">SQL (MySQL / MS SQL)</span><span class="skill-pct">82%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-w="82"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">R Programming</span><span class="skill-pct">75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-w="75"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">HTML / CSS</span><span class="skill-pct">70%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-w="70"></div></div></div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-title">Data Engineering</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Apache Spark (PySpark)</span><span class="skill-pct">78%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-w="78"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">ETL Pipeline Dev.</span><span class="skill-pct">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-w="80"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Apache Airflow</span><span class="skill-pct">72%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-w="72"></div></div></div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-title">BI & Visualization</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Power BI</span><span class="skill-pct">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-w="85"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Tableau</span><span class="skill-pct">72%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-w="72"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Excel / KPI Design</span><span class="skill-pct">83%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-w="83"></div></div></div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-title">Risk & Statistical Analytics</div>
+        <div class="skill-tags">
+          <span class="tag">Credit Risk</span><span class="tag">Market Risk</span><span class="tag">VaR</span>
+          <span class="tag">NPL Analysis</span><span class="tag">Regression Analysis</span><span class="tag">Hypothesis Testing</span>
+          <span class="tag">Statistical Modeling</span><span class="tag">Basel III</span><span class="tag">KRI Design</span><span class="tag">RAG Classification</span><span class="tag">Lagged Correlation</span><span class="tag">Drawdown Analysis</span><span class="tag">Capital Adequacy (CAR)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label reveal">Academic background</div>
+  <h2 class="section-title reveal">Education</h2>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">2022 – Present</div>
+      <div class="timeline-degree">Bachelor of Financial Engineering</div>
+      <div class="timeline-school">Institute of Technology of Cambodia (ITC) · Phnom Penh</div>
+      <div class="timeline-tags">
+        <span class="timeline-tag">Risk Management</span><span class="timeline-tag">Data Analytics</span>
+        <span class="timeline-tag">Financial Modeling</span><span class="timeline-tag">Statistics</span>
+        <span class="timeline-tag">Data Engineering</span><span class="timeline-tag">Business Intelligence</span>
+      </div>
+    </div>
+    <div class="timeline-item reveal reveal-delay-1">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">2025 – Present</div>
+      <div class="timeline-degree">Secretary & Team Lead</div>
+      <div class="timeline-school">Data Science & Machine Learning Club · ITC</div>
+      <div class="timeline-tags">
+        <span class="timeline-tag">Leadership</span><span class="timeline-tag">Workshop Organization</span><span class="timeline-tag">Team Collaboration</span>
+      </div>
+    </div>
+    <div class="timeline-item reveal reveal-delay-2">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">2022 – 2023</div>
+      <div class="timeline-degree">Youth Volunteer</div>
+      <div class="timeline-school">Union of Youth Federations of Kandal Province</div>
+      <div class="timeline-tags">
+        <span class="timeline-tag">Community Engagement</span><span class="timeline-tag">Event Organization</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label reveal">My work</div>
+  <h2 class="section-title reveal">Projects</h2>
+  <div class="projects-grid">
+
+    <!-- P1: Credit & Market Risk -->
+    <div class="project-card reveal" onclick="openLightbox('risk')">
+      <div class="project-icon-area icon-risk">
+        <div class="project-icon-bg"></div>
+        <svg class="project-icon-svg" viewBox="0 0 64 64" fill="none">
+          <rect x="8" y="34" width="8" height="22" rx="2" fill="#dc262618"/><rect x="20" y="24" width="8" height="32" rx="2" fill="#dc262630"/>
+          <rect x="32" y="14" width="8" height="42" rx="2" fill="#dc262650"/><rect x="44" y="6" width="8" height="50" rx="2" fill="#dc2626"/>
+          <path d="M10 38 L22 28 L34 18 L46 10" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="46" cy="10" r="3.5" fill="#dc2626"/>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="project-num">01 / 05</span><span class="project-type badge-risk">Risk Analysis</span></div>
+        <h3 class="project-title">Cambodia Banking Sector Risk Analysis</h3>
+        <p class="project-desc">Analyzed Cambodia's banking sector using NBC Annual Reports (2020–2024), Yahoo Finance market data, and IMF indicators — covering NPL deterioration, concentration risk, liquidity vulnerability, capital adequacy, and market shock transmission across 40+ banks.</p>
+        <div class="project-finding"><div class="project-finding-label">Key Finding</div>
+        <p>System NPL rose from 2.0% → 7.2% (2020–2024), breaching the Basel 5% threshold. 8 banks exceed 10% NPL, with regional market stress leading credit deterioration by 12–18 months.</p></div>
+        <div class="project-tools"><span class="ptag">Python</span><span class="ptag">Pandas</span><span class="ptag">Matplotlib</span><span class="ptag">yfinance</span><span class="ptag">Historical VaR (95%)</span><span class="ptag">NPL Analysis</span><span class="ptag">Basel III</span><span class="ptag">Rolling Volatility</span><span class="ptag">Lagged Correlation</span></div>
+        <div class="project-links">
+          <a href="https://github.com/rachanaaa-dot66/cambodia-banking-risk-analysis" target="_blank" class="project-link" onclick="event.stopPropagation()">⌥ GitHub →</a>
+          <a href="#" class="project-link" onclick="event.stopPropagation();openLightbox('risk');return false">Details →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- P2: BI Dashboard -->
+    <div class="project-card reveal reveal-delay-1" onclick="openLightbox('bi')">
+      <div class="project-icon-area icon-bi">
+        <div class="project-icon-bg"></div>
+        <svg class="project-icon-svg" viewBox="0 0 64 64" fill="none">
+          <rect x="6" y="10" width="52" height="44" rx="4" stroke="#1d4ed8" stroke-width="1.5" fill="none"/>
+          <rect x="6" y="10" width="52" height="11" rx="4" fill="#1d4ed818"/>
+          <rect x="13" y="27" width="17" height="19" rx="2" fill="#1d4ed828"/>
+          <rect x="34" y="33" width="17" height="13" rx="2" fill="#1d4ed845"/>
+          <circle cx="22" cy="23" r="3" fill="#1d4ed8"/>
+          <rect x="28" y="21" width="14" height="4" rx="2" fill="#1d4ed820"/>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="project-num">02 / 05</span><span class="project-type badge-bi">Business Intelligence</span></div>
+        <h3 class="project-title">Cambodia Banking Risk & BI Dashboard</h3>
+        <p class="project-desc">Full end-to-end banking analytics platform — synthetic data generation for 5,000 customers, PostgreSQL 16 data warehouse (864K+ rows), Docker containerization, SQL analysis, and 4 interactive Power BI dashboards covering executive overview, credit risk, loan portfolio, and customer analytics.</p>
+        <div class="project-finding"><div class="project-finding-label">Dashboard Sections</div><p>Executive Overview · Customer Analytics · Credit Risk Management · Loan Portfolio Analysis · NPL Ratio: 10.61% · $39.31M Loans Outstanding · 864K+ rows across 9 tables</p></div>
+        <div class="project-tools"><span class="ptag">Power BI</span><span class="ptag">PostgreSQL</span><span class="ptag">Docker</span><span class="ptag">Python</span><span class="ptag">DAX</span><span class="ptag">SQL</span><span class="ptag">KPI Design</span><span class="ptag">Data Modeling</span></div>
+        <div class="project-links">
+          <a href="https://github.com/rachanaaa-dot66/Cambodia-Banking-Risk-BI" target="_blank" class="project-link" onclick="event.stopPropagation()">⌥ GitHub →</a>
+          <a href="https://app.powerbi.com/groups/d5476b19-f539-4874-b258-3d0b879aace0/reports/1bf49ab3-07ff-493b-a4e1-038de91ba9cb/75da27180954bdca353e?experience=power-bi" target="_blank" class="project-link live" onclick="event.stopPropagation()">▶ Live Dashboard →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- P3: ETL Pipeline -->
+    <div class="project-card reveal reveal-delay-2" onclick="openLightbox('etl')">
+      <div class="project-icon-area icon-etl">
+        <div class="project-icon-bg"></div>
+        <svg class="project-icon-svg" viewBox="0 0 64 64" fill="none">
+          <circle cx="12" cy="32" r="8" stroke="#16a34a" stroke-width="1.5" fill="#16a34a10"/>
+          <circle cx="32" cy="14" r="8" stroke="#16a34a" stroke-width="1.5" fill="#16a34a1a"/>
+          <circle cx="52" cy="32" r="8" stroke="#16a34a" stroke-width="1.5" fill="#16a34a28"/>
+          <circle cx="32" cy="50" r="8" stroke="#16a34a" stroke-width="1.5" fill="#16a34a"/>
+          <path d="M20 32h4M40 32h4M32 22v4M32 42v4" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="2 2" stroke-linecap="round"/>
+          <text x="8.5" y="35" font-size="6.5" fill="#16a34a" font-family="monospace">Py</text>
+          <text x="25.5" y="17" font-size="5.5" fill="#16a34a" font-family="monospace">Spark</text>
+          <text x="46.5" y="35" font-size="5" fill="#16a34a" font-family="monospace">SQL</text>
+          <text x="27.5" y="53" font-size="5" fill="white" font-family="monospace">BI</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="project-num">03 / 05</span><span class="project-type badge-etl">Data Engineering</span></div>
+        <h3 class="project-title">Personal Finance ETL Pipeline</h3>
+        <p class="project-desc">End-to-end data engineering pipeline — 1M+ Cambodia-realistic transactions generated, cleaned via PySpark ETL (30K duplicates removed, 59K anomalies flagged), loaded into PostgreSQL star schema, orchestrated with Apache Airflow, and visualized through both Metabase and Streamlit dashboards.</p>
+        <div class="project-finding"><div class="project-finding-label">Architecture</div><p>Python Simulation → PySpark ETL → PostgreSQL Warehouse → Metabase + Streamlit → Airflow Validation</p></div>
+        <div class="project-tools"><span class="ptag">PySpark</span><span class="ptag">PostgreSQL</span><span class="ptag">Docker</span><span class="ptag">Airflow</span><span class="ptag">Metabase</span><span class="ptag">Streamlit</span><span class="ptag">Star Schema</span><span class="ptag">Anomaly Detection</span></div>
+        <div class="project-links">
+          <a href="https://github.com/rachanaaa-dot66/personal-finance-pipeline" target="_blank" class="project-link" onclick="event.stopPropagation()">⌥ GitHub →</a>
+          <a href="#" class="project-link" onclick="event.stopPropagation();openLightbox('etl');return false">Details →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- P4: Health Insurance (R) -->
+    <div class="project-card reveal reveal-delay-3" onclick="openLightbox('stat')">
+      <div class="project-icon-area icon-stat">
+        <div class="project-icon-bg"></div>
+        <svg class="project-icon-svg" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="22" stroke="#7c3aed" stroke-width="1.5" fill="none"/>
+          <path d="M14 32 Q20 18 32 16 Q44 18 50 32 Q44 46 32 48 Q20 46 14 32Z" stroke="#7c3aed" stroke-width="1.2" fill="#7c3aed0a"/>
+          <line x1="32" y1="10" x2="32" y2="54" stroke="#7c3aed" stroke-width="1" stroke-dasharray="2 3"/>
+          <line x1="10" y1="32" x2="54" y2="32" stroke="#7c3aed" stroke-width="1" stroke-dasharray="2 3"/>
+          <circle cx="32" cy="22" r="3" fill="#7c3aed"/>
+          <circle cx="44" cy="28" r="2.5" fill="#7c3aed80"/>
+          <circle cx="20" cy="36" r="2.5" fill="#7c3aed80"/>
+          <text x="26" y="37" font-size="9" fill="#7c3aed" font-weight="bold" font-family="monospace">R</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="project-num">04 / 05</span><span class="project-type badge-stat">Statistical Analysis</span></div>
+        <h3 class="project-title">Health Insurance Charges — Statistical Analysis</h3>
+        <p class="project-desc">Investigated whether gender drives health insurance pricing using progressive regression modeling across 1,338 individuals — from unadjusted t-test through full multivariate control for age, BMI, smoking, children, and region. Conducted in R with full diagnostic checking.</p>
+        <div class="project-finding"><div class="project-finding-label">Key Finding</div><p>Men initially pay $1,387 more (p=0.036), but this disappears entirely after controlling for BMI and smoking (p=0.745). Primary driver: smoking adds $23,834. R² jumps from 0.3% → 75.1% when health factors are added.</p></div>
+        <div class="project-tools"><span class="ptag">R</span><span class="ptag">ggplot2</span><span class="ptag">GGally</span><span class="ptag">Multiple Regression</span><span class="ptag">Welch's t-test</span><span class="ptag">Cohen's d</span><span class="ptag">Levene's Test</span><span class="ptag">Leverage Analysis</span></div>
+        <div class="project-links">
+          <span class="project-link no-github">Group research · R Markdown report</span>
+          <a href="#" class="project-link" onclick="event.stopPropagation();openLightbox('stat');return false">Details →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- P5: Logistics -->
+    <div class="project-card reveal" onclick="openLightbox('log')">
+      <div class="project-icon-area icon-log">
+        <div class="project-icon-bg"></div>
+        <svg class="project-icon-svg" viewBox="0 0 64 64" fill="none">
+          <rect x="6" y="20" width="24" height="16" rx="3" stroke="#a16207" stroke-width="1.5" fill="#a1620710"/>
+          <rect x="34" y="20" width="24" height="16" rx="3" stroke="#a16207" stroke-width="1.5" fill="#a1620720"/>
+          <path d="M30 28h4" stroke="#a16207" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 36v8l10 0" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="24" cy="44" r="4" stroke="#a16207" stroke-width="1.5" fill="#a1620730"/>
+          <circle cx="40" cy="44" r="4" stroke="#a16207" stroke-width="1.5" fill="#a16207"/>
+          <path d="M44 44l10 0 0-8" stroke="#a16207" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14 28 Q18 24 22 28" stroke="#a16207" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="project-num">05 / 05</span><span class="project-type badge-log">Business Analytics</span></div>
+        <h3 class="project-title">Logistics Delivery Performance Analysis</h3>
+        <p class="project-desc">Cleaned and analyzed 10,999 orders in Excel (pivot tables), then built an interactive Power BI dashboard tracking delivery performance across weight categories, warehouses, shipment modes, and discount tiers — identifying key drivers of the 40.3% late delivery rate.</p>
+        <div class="project-finding"><div class="project-finding-label">Key Finding</div><p>40.3% of 10,999 orders were delivered late (4,436 orders). Heavy and Medium weight categories had the highest delay rates, and low-discount orders showed the most delays — average order cost $210.20.</p></div>
+        <div class="project-tools"><span class="ptag">Excel</span><span class="ptag">Power BI</span><span class="ptag">Pivot Tables</span><span class="ptag">Data Cleaning</span><span class="ptag">KPI Design</span><span class="ptag">DAX</span></div>
+        <div class="project-links">
+          <span class="project-link no-github">Learning project · No repo</span>
+          <a href="#" class="project-link" onclick="event.stopPropagation();openLightbox('log');return false">Details →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section id="outcomes">
+  <div class="section-label reveal">What I built</div>
+  <h2 class="section-title reveal">Outcomes & Deliverables</h2>
+  <p class="outcomes-intro reveal">A gallery of real outputs — dashboards, analyses, and pipelines from each project. Click any card to explore the full deliverable.</p>
+  <div class="outcomes-grid">
+
+    <div class="outcome-card reveal" onclick="openLightbox('bi')">
+      <div class="outcome-thumb" style="background:#eff6ff;">
+        <div class="outcome-thumb-inner">
+          <div class="pbi-hdr" style="background:#2b7dc0;"></div>
+          <div class="pbi-bd">
+            <div class="pbi-tile" style="color:#dc2626;">NPL 7.2%</div>
+            <div class="pbi-tile">LTD 71%</div>
+            <div class="pbi-tile" style="color:#16a34a;">12 Banks</div>
+            <div class="pbi-tile" style="color:#ea580c;">▲ Risk</div>
+          </div>
+          <div style="padding:4px 5px;"><div class="mcs">
+            <div class="bsm" style="height:30%;background:#93c5fd;"></div>
+            <div class="bsm" style="height:45%;background:#60a5fa;"></div>
+            <div class="bsm" style="height:62%;background:#3b82f6;"></div>
+            <div class="bsm" style="height:78%;background:#ef4444;"></div>
+            <div class="bsm" style="height:94%;background:#dc2626;"></div>
+            <div class="bsm" style="height:86%;background:#b91c1c;"></div>
+          </div></div>
+        </div>
+        <div class="outcome-overlay"><span class="outcome-overlay-icon">⤢</span></div>
+      </div>
+      <div class="outcome-info"><div class="outcome-project">Project 02 · Power BI · Live</div><div class="outcome-name">Banking Risk Dashboard</div></div>
+    </div>
+
+    <div class="outcome-card reveal reveal-delay-1" onclick="openLightbox('risk')">
+      <div class="outcome-thumb" style="background:#111;">
+        <div class="outcome-thumb-inner">
+          <div class="code-bg">
+            <div class="cl" style="background:#569cd6;width:76%;"></div>
+            <div class="cl" style="background:#ce9178;width:58%;"></div>
+            <div class="cl" style="background:#4ec9b0;width:82%;"></div>
+            <div class="cl" style="background:#dcdcaa;width:54%;"></div>
+            <div class="cl" style="background:#4ec9b0;width:68%;"></div>
+            <div class="cl" style="background:#c586c0;width:48%;"></div>
+            <div class="cl" style="background:#569cd6;width:64%;"></div>
+            <div class="cl" style="background:#ce9178;width:74%;"></div>
+          </div>
+        </div>
+        <div class="outcome-overlay"><span class="outcome-overlay-icon">⤢</span></div>
+      </div>
+      <div class="outcome-info"><div class="outcome-project">Project 01 · Python</div><div class="outcome-name">Credit & VaR Risk Analysis</div></div>
+    </div>
+
+    <div class="outcome-card reveal reveal-delay-2" onclick="openLightbox('etl')">
+      <div class="outcome-thumb" style="background:#0d1117;">
+        <div class="outcome-thumb-inner">
+          <div class="dag-bg">
+            <div style="font-size:5px;color:#58a6ff;margin-bottom:5px;font-family:monospace;">DAG: personal_finance_pipeline</div>
+            <div><span class="dag-nd">simulate</span><span class="dag-ar">→</span><span class="dag-nd">spark_etl</span><span class="dag-ar">→</span><span class="dag-nd">pg_load</span><span class="dag-ar">→</span><span class="dag-nd">validate</span></div>
+            <div style="margin-top:6px;font-size:4.5px;color:#3fb950;font-family:monospace;">✓ 1,000,000 clean records<br>✓ 59,448 anomalies flagged<br><span style="color:#58a6ff;">→ Airflow: 3/3 checks PASSED</span></div>
+          </div>
+        </div>
+        <div class="outcome-overlay"><span class="outcome-overlay-icon">⤢</span></div>
+      </div>
+      <div class="outcome-info"><div class="outcome-project">Project 03 · Airflow / PySpark</div><div class="outcome-name">ETL Pipeline — 1M+ Records</div></div>
+    </div>
+
+    <div class="outcome-card reveal" onclick="openLightbox('stat')">
+      <div class="outcome-thumb" style="background:#fdf4ff;">
+        <div class="outcome-thumb-inner">
+          <div class="rhdr"></div>
+          <div class="rbd">
+            <div style="font-size:5px;color:#7c3aed;padding:3px 4px 1px;font-family:monospace;">Model Comparison — R²</div>
+            <div class="rbar-row"><span class="rbar-lbl">Age Only</span><div class="rbar-bg"><div class="rbar-fill" style="width:9.3%;"></div></div><span style="font-size:4.5px;color:#888;margin-left:3px;">9%</span></div>
+            <div class="rbar-row"><span class="rbar-lbl">+Health</span><div class="rbar-bg"><div class="rbar-fill" style="width:74.7%;"></div></div><span style="font-size:4.5px;color:#888;margin-left:3px;">74.7%</span></div>
+            <div class="rbar-row"><span class="rbar-lbl">Full</span><div class="rbar-bg"><div class="rbar-fill" style="width:75.1%;"></div></div><span style="font-size:4.5px;color:#888;margin-left:3px;">75.1%</span></div>
+            <div style="font-size:4px;color:#a855f7;padding:3px 4px 0;">Gender effect disappears after controls</div>
+          </div>
+        </div>
+        <div class="outcome-overlay"><span class="outcome-overlay-icon">⤢</span></div>
+      </div>
+      <div class="outcome-info"><div class="outcome-project">Project 04 · R / Statistics</div><div class="outcome-name">Insurance Charges Analysis</div></div>
+    </div>
+
+    <div class="outcome-card reveal reveal-delay-1" onclick="openLightbox('log')">
+      <div class="outcome-thumb" style="background:#fefce8;">
+        <div class="outcome-thumb-inner">
+          <div class="xhdr"></div>
+          <div class="xrow"><div class="xc h">Mode</div><div class="xc h">Orders</div><div class="xc h">Delay%</div></div>
+          <div class="xrow"><div class="xc">📦 Total</div><div class="xc">10,999</div><div class="xc" style="color:#1d4ed8;">All</div></div>
+          <div class="xrow"><div class="xc">✅ On-Time</div><div class="xc">6,563</div><div class="xc" style="color:#16a34a;">59.7%</div></div>
+          <div class="xrow"><div class="xc">⚠️ Late</div><div class="xc">4,436</div><div class="xc" style="color:#dc2626;">40.3%</div></div>
+          <div class="xrow" style="border:none"><div class="xc" style="font-size:4px;color:#999;grid-column:span 3;">Avg cost $210.20</div></div>
+        </div>
+        <div class="outcome-overlay"><span class="outcome-overlay-icon">⤢</span></div>
+      </div>
+      <div class="outcome-info"><div class="outcome-project">Project 05 · Excel / Power BI</div><div class="outcome-name">Logistics Performance Report</div></div>
+    </div>
+
+    <div class="outcome-card add-card reveal reveal-delay-2">
+      <div class="add-thumb">
+        <svg viewBox="0 0 32 32" fill="none" stroke-width="1.5"><circle cx="16" cy="16" r="13"/><path d="M16 10v12M10 16h12" stroke-linecap="round"/></svg>
+        <span>Add your screenshots</span>
+      </div>
+      <div class="outcome-info"><div class="outcome-project">Your real dashboards</div><div class="outcome-name">Upload actual images here</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="section-label reveal">Beyond the data</div>
+  <h2 class="section-title reveal">Leadership & Activities</h2>
+  <div class="leadership-grid">
+    <div class="activity-card reveal">
+      <div class="activity-role">Secretary & Team Lead · 2025–Present</div>
+      <div class="activity-title">Data Science & ML Club</div>
+      <div class="activity-org">Institute of Technology of Cambodia (ITC)</div>
+      <div class="activity-desc">Coordinate club activities and member communication. Support project planning, team collaboration, and organize technical workshops in data science and machine learning.</div>
+    </div>
+    <div class="activity-card reveal reveal-delay-1">
+      <div class="activity-role">Finalist</div>
+      <div class="activity-title">Next Gen Impact Competition</div>
+      <div class="activity-org">Cybersecurity Awareness Platform</div>
+      <div class="activity-desc">Co-developed a cybersecurity awareness platform using storytelling and interactive user experiences. Collaborated with multidisciplinary teams to design innovative solutions.</div>
+    </div>
+    <div class="activity-card reveal reveal-delay-2">
+      <div class="activity-role">Participant</div>
+      <div class="activity-title">Design Thinking Hackathon</div>
+      <div class="activity-org">Technology & Community Innovation</div>
+      <div class="activity-desc">Developed technology-driven solutions for community challenges, applying design thinking methodology throughout ideation, prototyping, and presentation phases.</div>
+    </div>
+    <div class="activity-card reveal reveal-delay-3">
+      <div class="activity-role">Volunteer · 2022–2023</div>
+      <div class="activity-title">Youth Federation of Kandal Province</div>
+      <div class="activity-org">Union of Youth Federations</div>
+      <div class="activity-desc">Supported youth development initiatives and community engagement, assisting in event organization and team coordination across the province.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label reveal">Get in touch</div>
+  <h2 class="section-title reveal">Let's Work Together</h2>
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="contact-big">Ready to turn<br>data into<br>decisions.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:rachanasophon1818@gmail.com">rachanasophon1818@gmail.com<span>Email ↗</span></a>
+        <a class="contact-link" href="https://github.com/rachanaaa-dot66" target="_blank">GitHub<span>github.com/rachanaaa-dot66 ↗</span></a>
+        <a class="contact-link" href="#">📍 Sen Sok, Phnom Penh, Cambodia<span>Open to remote</span></a>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-delay-2">
+      <div class="form-group"><label>Your Name</label><input type="text" placeholder="John Smith"></div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="john@company.com"></div>
+      <div class="form-group"><label>Message</label><textarea rows="5" placeholder="I'd love to discuss..."></textarea></div>
+      <button class="form-submit">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 RACHANA SOPHON · Financial Engineering · ITC Cambodia</span>
+  <div class="footer-langs"><span>🇰🇭 Khmer</span><span>🇬🇧 English</span><span>🇫🇷 French</span></div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <div class="lb-inner" id="lb-content">
+    <button class="lb-close" onclick="closeLightbox()">✕</button>
+  </div>
+</div>
+
+<script>
+/* TYPEWRITER */
+const phrases=["Financial Engineering Student","Risk Analytics · Credit & Market Risk","Data Engineering · ETL Pipelines","Business Intelligence · Power BI","Statistical Analysis · R Programming","Turning Raw Data into Decisions"];
+let pi=0,ci=0,del=false;
+const el=document.getElementById('typed-text');
+function type(){
+  const w=phrases[pi];
+  if(!del){el.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(type,2400);return;}}
+  else{el.textContent=w.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;}}
+  setTimeout(type,del?42:68);
+}
+type();
+
+/* NAV SCROLL */
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40));
+
+/* REVEAL */
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(x=>ro.observe(x));
+
+/* SKILL BARS */
+const bo=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.querySelectorAll('.skill-bar-fill').forEach(b=>b.style.width=b.dataset.w+'%');}),{threshold:.2});
+document.querySelectorAll('.about-right').forEach(x=>bo.observe(x));
+
+/* LIGHTBOX DATA */
+const lbData={
+  risk:{
+    tag:'Risk Analysis',tagClass:'badge-risk',
+    title:'Cambodia Banking Sector Risk Analysis',
+    org:'Project 01 · Python · Pandas · Matplotlib · 2024',
+    github:'https://github.com/rachanaaa-dot66/cambodia-banking-risk-analysis',
+    live:null,
+    previewBg:'#fff5f5',
+    previewContent:`<div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;">
+      <div style="display:flex;gap:12px;width:92%;">
+        <div style="flex:1;background:white;border-radius:8px;padding:12px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.07);">
+          <div style="font-size:1.5rem;font-weight:700;color:#dc2626;font-family:'Cormorant Garamond',serif;">7.2%</div>
+          <div style="font-size:.65rem;color:#888;margin-top:3px;">NPL Ratio 2024</div>
+        </div>
+        <div style="flex:1;background:white;border-radius:8px;padding:12px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.07);">
+          <div style="font-size:1.5rem;font-weight:700;color:#1d4ed8;font-family:'Cormorant Garamond',serif;">−18%</div>
+          <div style="font-size:.65rem;color:#888;margin-top:3px;">VaR (95%, 10-day)</div>
+        </div>
+        <div style="flex:1;background:white;border-radius:8px;padding:12px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.07);">
+          <div style="font-size:1.5rem;font-weight:700;color:#ea580c;font-family:'Cormorant Garamond',serif;">0.74</div>
+          <div style="font-size:.65rem;color:#888;margin-top:3px;">Lagged Correlation</div>
+        </div>
+      </div>
+      <div style="width:92%;background:white;border-radius:8px;padding:12px;box-shadow:0 1px 6px rgba(0,0,0,.07);">
+        <div style="font-size:.62rem;color:#aaa;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">NPL Trend 2020–2024</div>
+        <div style="display:flex;align-items:flex-end;gap:8px;height:55px;">
+          <div style="flex:1;background:#fca5a5;border-radius:3px 3px 0 0;height:28%;"></div>
+          <div style="flex:1;background:#f87171;border-radius:3px 3px 0 0;height:44%;"></div>
+          <div style="flex:1;background:#ef4444;border-radius:3px 3px 0 0;height:60%;"></div>
+          <div style="flex:1;background:#dc2626;border-radius:3px 3px 0 0;height:80%;"></div>
+          <div style="flex:1;background:#b91c1c;border-radius:3px 3px 0 0;height:100%;"></div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:5px;">${['2020','2021','2022','2023','2024'].map(y=>`<div style="flex:1;text-align:center;font-size:.55rem;color:#bbb;">${y}</div>`).join('')}</div>
+      </div>
+    </div>`,
+    previewNote:'📌 Replace with your actual Python chart screenshots from the project',
+    findings:[
+      {title:'NPL Rose 260% in 4 Years', text:'System-wide NPL ratio surged from 2.0% (2020) to 7.2% (2024) — more than doubling the ASEAN average of 3.0% and breaching the Basel stress threshold of 5%.'},
+      {title:'8 Banks in Critical Zone', text:'8 individual banks exceed the 10% NPL threshold, with Hattha Bank jumping from 14.6% to 35.6% in a single year — the largest single-year deterioration observed.'},
+      {title:'Market Stress as Leading Signal', text:'Regional market shocks (EEM/VNM) preceded Cambodia\'s domestic NPL rise by 12–18 months, validating market indicators as early-warning triggers for credit cycle stress.'},
+      {title:'Liquidity Double Vulnerability', text:'20 banks carry Loans-to-Deposits ratios above 150%, creating compounded risk: high NPL plus reliance on wholesale funding — concentrated in mid-sized and specialized institutions.'}
+    ],
+    tools:['Python','Pandas','Matplotlib','NumPy','Yahoo Finance API','Value-at-Risk','Rolling Volatility','Drawdown Analysis','Lagged Correlation','NPL Analysis']
+  },
+  bi:{
+    tag:'Business Intelligence',tagClass:'badge-bi',
+    title:'Cambodia Banking Risk & BI Dashboard',
+    org:'Project 02 · Power BI · DAX · KPI Design · 2024',
+    github:'https://github.com/rachanaaa-dot66/Cambodia-Banking-Risk-BI',
+    live:'https://app.powerbi.com/groups/d5476b19-f539-4874-b258-3d0b879aace0/reports/1bf49ab3-07ff-493b-a4e1-038de91ba9cb/75da27180954bdca353e?experience=power-bi',
+    previewBg:'#eff6ff',
+    previewContent:`<div style="width:92%;background:white;border-radius:10px;overflow:hidden;box-shadow:0 3px 16px rgba(0,0,0,.1);">
+      <div style="background:#2b7dc0;padding:9px 14px;color:white;font-size:.75rem;font-weight:500;display:flex;align-items:center;gap:6px;">🏦 Cambodia Banking Risk Monitor</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px;">
+        <div style="background:#fff5f5;border-radius:7px;padding:10px;text-align:center;">
+          <div style="font-size:1.25rem;font-weight:700;color:#dc2626;font-family:'Cormorant Garamond',serif;">10.61%</div>
+          <div style="font-size:.62rem;color:#888;">NPL Ratio</div>
+          <div style="font-size:.58rem;color:#dc2626;margin-top:2px;font-weight:500;">▲ HIGH RISK</div>
+        </div>
+        <div style="background:#fef9c3;border-radius:7px;padding:10px;text-align:center;">
+          <div style="font-size:1.25rem;font-weight:700;color:#a16207;font-family:'Cormorant Garamond',serif;">71%</div>
+          <div style="font-size:.62rem;color:#888;">LTD Ratio</div>
+          <div style="font-size:.58rem;color:#a16207;margin-top:2px;font-weight:500;">● WATCH</div>
+        </div>
+        <div style="background:#f0fdf4;border-radius:7px;padding:10px;text-align:center;">
+          <div style="font-size:1.25rem;font-weight:700;color:#16a34a;font-family:'Cormorant Garamond',serif;">12</div>
+          <div style="font-size:.62rem;color:#888;">Banks Tracked</div>
+          <div style="font-size:.58rem;color:#16a34a;margin-top:2px;font-weight:500;">● NORMAL</div>
+        </div>
+      </div>
+    </div>`,
+    previewNote:'📌 Replace with real Power BI screenshots — or click "View Live Dashboard" above to see the actual report',
+    findings:[
+      {title:'864K+ Rows, 9 Tables',text:'Full PostgreSQL 16 data warehouse with 753K transactions, 24K loan payments, 65K monthly snapshots — loaded via Docker and validated with 24/24 checks passed.'},
+      {title:'NPL Ratio: 10.61%',text:'Highest NPL in Prey Veng province (13.19%) driven by 2024 Agricultural Stress Event. Vehicle loans riskiest at 11.2% NPL vs SME loans safest at 8.5%.'},
+      {title:'4 Power BI Dashboards',text:'Executive Overview, Customer Analytics, Credit Risk Management, and Loan Portfolio Analysis — all connected live to PostgreSQL via DirectQuery.'},
+      {title:'25 KPIs Tracked',text:'Full KPI framework across Business Performance, Customer Analytics, Risk Management, and Branch Performance — designed for C-level and risk officer audiences.'}
+    ],
+    tools:['Power BI','DAX','PostgreSQL 16','Docker','Python','pandas','numpy','SQL','Data Modeling','KPI Framework','ETL Pipeline','Data Warehouse']
+  },
+  etl:{
+    tag:'Data Engineering',tagClass:'badge-etl',
+    title:'Personal Finance ETL Pipeline',
+    org:'Project 03 · Python · PySpark · PostgreSQL · Airflow · Metabase · Streamlit · 2024',
+    github:'https://github.com/rachanaaa-dot66/personal-finance-pipeline',
+    live:null,
+    previewBg:'#f0fdf4',
+    previewContent:`<div style="background:#0d1117;border-radius:10px;padding:18px;width:92%;font-family:monospace;">
+      <div style="font-size:.7rem;color:#58a6ff;margin-bottom:10px;">DAG: finance_etl_pipeline · Apache Airflow</div>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px;flex-wrap:wrap;">
+        ${['generate_data','spark_etl','load_mysql','refresh_pbi'].map((n,i)=>`<span style="background:#238636;color:white;border-radius:4px;padding:3px 8px;font-size:.65rem;">${n}</span>${i<3?'<span style="color:#58a6ff;font-size:.8rem;">→</span>':''}`).join('')}
+      </div>
+      <div style="font-size:.63rem;color:#3fb950;line-height:2;">
+        ✓ 1,000,000 records generated<br>
+        ✓ PySpark ETL completed (3.2s)<br>
+        ✓ Star schema loaded to MySQL<br>
+        ✓ Power BI dataset refreshed<br>
+        <span style="color:#58a6ff;">→ Pipeline status: SUCCESS</span>
+      </div>
+    </div>`,
+    previewNote:'📌 Replace with your Airflow DAG screenshots or pipeline output screenshots',
+    findings:[
+      {title:'1M Clean Transactions',text:'Generated 1,030,000 raw records, removed 30,000 duplicates, and flagged 59,448 anomalies — delivering exactly 1,000,000 clean records to the warehouse.'},
+{title:'Real Data Quality Work',text:'Intentionally injected 8 types of data quality issues (duplicates, nulls, mixed date formats, currency inconsistencies) then resolved all of them via PySpark ETL.'},
+{title:'Dual Dashboard Layer',text:'Metabase for business dashboards (Financial Overview, Spending Analysis, Customer Insights) and a custom Streamlit app with 5 interactive pages and date/city/income filtering.'},
+{title:'Full Orchestration Stack',text:'Docker Compose manages Spark, PostgreSQL, Metabase, Streamlit, and Airflow — Airflow DAG validates warehouse integrity with 3 automated checks after every pipeline run.'}
+    ],
+    tools:['Python','PySpark','PostgreSQL','Docker','Apache Airflow','Metabase','Streamlit','Plotly','Star Schema','Data Quality','Anomaly Detection','ETL Development','Git']
+  },
+  stat:{
+    tag:'Statistical Analysis',tagClass:'badge-stat',
+    title:'Health Insurance Charges Analysis',
+    org:'Project 04 · R · ggplot2 · Regression · Hypothesis Testing · GGally · dplyr',
+    github:null,
+    live:null,
+    previewBg:'#fdf4ff',
+    previewContent:`<div style="width:92%;background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
+      <div style="background:#7c3aed;padding:9px 14px;color:white;font-size:.75rem;font-weight:500;">📊 Model Comparison — Gender Effect on Insurance Charges</div>
+      <div style="padding:12px;">
+        ${[['Gender Only','$1,387','0.036','0.003','Yes'],['+ Age','$1,539','0.015','0.093','Yes'],['+ Health & Smoking','−$109','0.745','0.747','No ✓'],['Full Model','−$131','0.693','0.751','No ✓']].map(r=>`
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 0.8fr;border-bottom:1px solid #f3e8ff;padding:6px 4px;font-size:.7rem;align-items:center;">
+          <span style="color:#3b0764;font-weight:${r[3]==='0.003'?'400':'500'};">${r[0]}</span>
+          <span style="color:${r[4]==='No ✓'?'#16a34a':'#dc2626'};text-align:center;">${r[1]}</span>
+          <span style="color:#555;text-align:center;">p=${r[2]}</span>
+          <span style="color:#555;text-align:center;">R²=${r[3]}</span>
+          <span style="color:${r[4]==='No ✓'?'#16a34a':'#dc2626'};text-align:center;font-size:.65rem;">${r[4]}</span>
+        </div>`).join('')}
+        <div style="font-size:.65rem;color:#7c3aed;margin-top:8px;padding:4px;">Key driver: Smoking status (+$23,834). Gender effect disappears after controls.</div>
+      </div>
+    </div>`,
+    previewNote:'📌 Replace with screenshots from your R report — charts, regression tables, etc.',
+    findings:[
+      {title:'Gender Effect Disappears',text:'Men initially pay $1,387 more (p=0.036), but after controlling for BMI and smoking the difference drops to −$109 and becomes completely insignificant (p=0.745).'},
+{title:'Smoking is the Real Driver',text:'Smoking status adds $23,834 to charges and single-handedly pushes R² from 9.3% to 74.7% — dwarfing all other variables including gender.'},
+{title:'Progressive Model Strategy',text:'4-model sequence: Gender Only (R²=0.3%) → +Age (9.3%) → +Health (74.7%) → Full Model (75.1%) — clearly isolating which variables truly matter.'},
+{title:'Smoking × Gender Interaction',text:'Smoking affects men and women differently (p=0.0043) — the $23,834 penalty is not equal across genders, suggesting gender-specific health risk pathways.'}
+    ],
+    tools:['R','ggplot2','GGally','dplyr','knitr','Welch\'s t-test','Multiple Regression','Cohen\'s d','Levene\'s Test','Leverage Analysis']
+  },
+  log:{
+    tag:'Business Analytics',tagClass:'badge-log',
+    title:'Logistics Delivery Performance Analysis',
+    org:'Project 05 · Excel · Power BI · Business Analytics · Learning Project',
+    github:null,
+    live:null,
+    previewBg:'#fefce8',
+    previewContent:`<div style="width:92%;background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);">
+      <div style="background:#a16207;padding:9px 14px;color:white;font-size:.75rem;font-weight:500;">📦 Logistics Delivery Performance Report</div>
+      <table style="width:100%;border-collapse:collapse;font-size:.72rem;">
+        <tr style="background:#fef9c3;"><th style="padding:7px 10px;text-align:left;color:#78350f;">Mode</th><th style="padding:7px 10px;color:#78350f;">Orders</th><th style="padding:7px 10px;color:#78350f;">On-Time %</th><th style="padding:7px 10px;color:#78350f;">Status</th></tr>
+        <tr style="border-bottom:1px solid #fef9c3;"><td style="padding:6px 10px;">✈️ Air</td><td style="padding:6px 10px;text-align:center;">1,203</td><td style="padding:6px 10px;text-align:center;color:#16a34a;font-weight:600;">91%</td><td style="padding:6px 10px;font-size:.65rem;color:#16a34a;">● Good</td></tr>
+        <tr style="border-bottom:1px solid #fef9c3;background:#fffbeb;"><td style="padding:6px 10px;">🚛 Road</td><td style="padding:6px 10px;text-align:center;">3,411</td><td style="padding:6px 10px;text-align:center;color:#ea580c;font-weight:600;">78%</td><td style="padding:6px 10px;font-size:.65rem;color:#ea580c;">● Watch</td></tr>
+        <tr><td style="padding:6px 10px;">🚢 Sea</td><td style="padding:6px 10px;text-align:center;">2,190</td><td style="padding:6px 10px;text-align:center;color:#dc2626;font-weight:600;">65%</td><td style="padding:6px 10px;font-size:.65rem;color:#dc2626;">● Review</td></tr>
+      </table>
+    </div>`,
+    previewNote:'📌 This was a learning project — add Excel/Power BI screenshots if available',
+    findings:[
+      {title:'40.3% Late Delivery Rate',text:'4,436 out of 10,999 orders were delivered late — well above acceptable thresholds. Heavy and Medium weight categories had the highest delay proportions vs Light items.'},
+{title:'Discount Tier Drives Delays',text:'Low-discount orders had the highest delay count (3,500+), suggesting pricing strategy and fulfillment urgency are linked — high-discount orders performed better.'},
+{title:'Shipment Mode Split',text:'Ship dominated volume (majority of orders), followed by Flight and Road. Each mode showed distinct on-time vs late ratios visible in the shipment volume donut chart.'},
+{title:'Customer Ratings Impacted',text:'On-time deliveries consistently received higher customer ratings across all rating levels (1–5), directly linking delivery performance to customer satisfaction scores.'}
+    ],
+    tools:['Microsoft Excel','Pivot Tables','Data Cleaning','Power BI','DAX','KPI Design','Delivery Analytics','Weight Category Analysis','Discount Rate Analysis','Customer Rating Analysis']
+  }
+};
+
+function openLightbox(key){
+  const d=lbData[key]; if(!d) return;
+  const c=document.getElementById('lb-content');
+  const btns=[];
+  if(d.github) btns.push(`<a href="${d.github}" target="_blank" class="lb-btn lb-btn-secondary">⌥ View on GitHub →</a>`);
+  if(d.live) btns.push(`<a href="${d.live}" target="_blank" class="lb-btn lb-btn-live">▶ View Live Dashboard →</a>`);
+  c.innerHTML=`
+    <button class="lb-close" onclick="closeLightbox()">✕</button>
+    <span class="lb-tag ${d.tagClass}">${d.tag}</span>
+    <h2 class="lb-title">${d.title}</h2>
+    <p class="lb-org">${d.org}</p>
+    ${btns.length?`<div class="lb-action-bar">${btns.join('')}</div>`:''}
+    <div class="lb-preview">
+      <div class="lb-preview-inner" style="background:${d.previewBg};">${d.previewContent}</div>
+      <p class="lb-preview-note">${d.previewNote}</p>
+    </div>
+    <div class="lb-section-title">Key Findings</div>
+    <div class="lb-findings">${d.findings.map(f=>`<div class="lb-finding"><strong>${f.title}</strong><p>${f.text}</p></div>`).join('')}</div>
+    <div class="lb-section-title">Tools & Technologies</div>
+    <div class="lb-tools">${d.tools.map(t=>`<span class="lb-tool">${t}</span>`).join('')}</div>
+  `;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+function closeLightboxOutside(e){if(e.target.id==='lightbox')closeLightbox();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+</script>
+</body>
+</html>
